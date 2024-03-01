@@ -1,10 +1,153 @@
+import Navbar from "@/components/navbar";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { PiBooksFill, PiChatCircleFill, PiExamFill } from "react-icons/pi";
 
 export default function Home() {
+  const services = [
+    {
+      title: "Book AI",
+      icon: <PiBooksFill color="white" size={40} />,
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
+    },
+    {
+      title: "Exam AI",
+      icon: <PiExamFill color="white" size={40} />,
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
+    },
+    {
+      title: "Discussion",
+      icon: <PiChatCircleFill color="white" size={40} />,
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
+    },
+  ];
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
-      <Button>Test Button</Button>
-    </main>
+    <>
+      <Navbar />
+      <main className="text-gray-800 relative">
+        <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div className="container mx-auto">
+          <section className="py-5 h-[calc(100vh_-_8rem)] flex flex-col items-center justify-center space-y-7 leading-normal relative">
+            <div className="absolute top-0 -z-10 h-full w-full">
+              <div className="absolute left-auto top-16 right-96 h-[350px] w-[350px] rounded-full bg-[rgba(109,165,244,0.5)] opacity-50 filter blur-[50px] animate-blob mix-blend-multiply"></div>
+              <div className="absolute left-auto top-16 right-40 h-[350px] w-[350px] rounded-full bg-[rgba(109,244,228,0.5)] opacity-50 filter blur-[50px] animate-blob animation-delay-2000 mix-blend-multiply animation-delay-2000"></div>
+              <div className="absolute left-auto top-60 right-72 h-[350px] w-[350px] rounded-full bg-[rgba(244,109,145,0.5)] opacity-50 filter blur-[50px] animate-blob animation-delay-4000 mix-blend-multiply animation-delay-4000"></div>
+            </div>
+            <h1 className="font-semibold text-6xl text-center w-8/12">
+              <span className="text-transparent bg-gradient-to-r bg-clip-text from-blue-500 to-green-500 inline">
+                Get Connected
+              </span>{" "}
+              to the Best Remote Jobs in Your Field
+            </h1>
+            <h1 className="text-gray-600 text-center w-6/12">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
+              iusto illo. Sequi molestiae similique ut, unde inventore
+              aspernatur consectetur
+            </h1>
+            <div className="flex justify-center gap-5 items-center w-6/12">
+              <Button className="px-8">Jelajahi</Button>
+              <Button variant="ghost">
+                <u className="text-blue-600">Masih Bingung?</u>
+              </Button>
+            </div>
+          </section>
+          <section className="py-14">
+            <p className="text-lg uppercase text-transparent bg-gradient-to-b bg-clip-text from-blue-500 to-green-500 font-semibold">
+              services
+            </p>
+            <h2 className="mt-3 flex items-center gap-2 font-semibold text-4xl text-gray-800">
+              <span className="w-4 h-4 bg-gray-800 inline-block rounded-full"></span>
+              What You Can Do?
+            </h2>
+            <div className="w-full flex justify-between items-center mt-16">
+              {services?.map((service, index) => (
+                <div
+                  key={index}
+                  className="w-3/12 flex flex-col justify-center items-center text-gray-800"
+                >
+                  <div className="h-16 w-16 rounded-xl flex justify-center items-center drop-shadow-2xl bg-blue-600">
+                    {service?.icon}
+                  </div>
+                  <h4 className="mt-4 text-xl font-semibold">
+                    {service?.title}
+                  </h4>
+                  <p className="mt-2 text-center text-base leading-relaxed">
+                    {service?.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+          <section className="py-14 relative">
+            <div className="absolute top-10 -z-10 h-full w-full">
+              <div className="absolute left-0 top-14 h-[250px] w-[250px] rounded-full bg-[rgba(109,165,244,0.5)] opacity-50 filter blur-[50px] animate-blob mix-blend-multiply"></div>
+              <div className="absolute left-44 top-5 h-[250px] w-[250px] rounded-full bg-[rgba(109,244,228,0.5)] opacity-50 filter blur-[50px] animate-blob animation-delay-2000 mix-blend-multiply animation-delay-2000"></div>
+              <div className="absolute left-20 top-40 h-[250px] w-[250px] rounded-full bg-[rgba(244,109,145,0.5)] opacity-50 filter blur-[50px] animate-blob animation-delay-4000 mix-blend-multiply animation-delay-4000"></div>
+            </div>
+            <div className="w-full flex justify-between">
+              <div className="w-6/12">
+                <p className="text-lg uppercase text-transparent bg-gradient-to-b bg-clip-text from-blue-500 to-green-500 font-semibold">
+                  Faq
+                </p>
+                <h2 className="flex items-center gap-2 font-semibold text-4xl text-gray-800">
+                  <span className="w-4 h-4 bg-gray-800 inline-block rounded-full"></span>
+                  Frequently Asked Questions
+                </h2>
+                <p className="mt-3">
+                  Masih bingung atau ragu? Hubungi kami di nomor +6288 999 222
+                  333
+                </p>
+              </div>
+              <div className="w-6/12">
+                <Accordion type="single" collapsible className="w-full">
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                    <AccordionContent>
+                      Yes. It adheres to the WAI-ARIA design pattern.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-2">
+                    <AccordionTrigger>Is it styled?</AccordionTrigger>
+                    <AccordionContent>
+                      Yes. It comes with default styles that matches the other
+                      components&apos; aesthetic.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-3">
+                    <AccordionTrigger>Is it animated?</AccordionTrigger>
+                    <AccordionContent>
+                      Yes. It&apos;s animated by default, but you can disable it
+                      if you prefer.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-2">
+                    <AccordionTrigger>Is it styled?</AccordionTrigger>
+                    <AccordionContent>
+                      Yes. It comes with default styles that matches the other
+                      components&apos; aesthetic.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-3">
+                    <AccordionTrigger>Is it animated?</AccordionTrigger>
+                    <AccordionContent>
+                      Yes. It&apos;s animated by default, but you can disable it
+                      if you prefer.
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer className="mt-5 p-3 mb-auto relative text-center text-sm">
+        ©2024 Mengai. All rights reserved.
+      </footer>
+    </>
   );
 }
