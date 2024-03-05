@@ -8,11 +8,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Login() {
+export default function ForgotPassword() {
   return (
     <>
       <main className="text-gray-800 relative flex flex-col items-center justify-center h-screen">
@@ -32,40 +31,44 @@ export default function Login() {
                   <Link className="text-blue-600" href="/">
                     Home
                   </Link>{" "}
-                  / Login
+                  / Forgot Password
                 </p>
-                <p></p>Login
+                <p>Forgot Password</p>
               </CardTitle>
               <CardDescription>
-                Input your username and password.
+                <span className="text-xs">
+                  Enter the email asociated with your account to receive
+                  password reset instruction.
+                </span>
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-7 mt-3">
               <div className="grid w-full max-w-sm items-center gap-1.5">
-                <Label htmlFor="username">Username</Label>
-                <Input type="text" id="username" placeholder="username" />
-              </div>
-              <div className="grid w-full max-w-sm items-center gap-1.5">
-                <Label htmlFor="password">Password</Label>
-                <Input type="password" id="password" placeholder="password" />
+                <Input
+                  type="email"
+                  id="username"
+                  placeholder="Enter Email Address"
+                />
               </div>
             </CardContent>
             <CardFooter className="mt-3 flex-col space-y-3">
-              <Button className="w-full">Login</Button>
-              <Button className="w-full" variant="outline">
-                <Image
-                  src="./google.svg"
-                  alt="logo google"
-                  width="25"
-                  height="25"
-                />
-                Login dengan Google
-              </Button>
+              <Button className="w-full">Send Link To Reset Password</Button>
             </CardFooter>
           </Card>
-          <p className="text-center text-sm">
-            ©2024 Mengai. All rights reserved.
-          </p>
+          <div className="space-y-10">
+            <p className="text-center text-sm">
+              Back to {""}
+              <Link
+                href="/login"
+                className="underline capitalize text-blue-600"
+              >
+                login!
+              </Link>
+            </p>
+            <p className="text-center text-sm">
+              ©2024 Mengai. All rights reserved.
+            </p>
+          </div>
         </section>
       </main>
     </>

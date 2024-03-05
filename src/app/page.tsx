@@ -1,3 +1,5 @@
+"use client";
+
 import Navbar from "@/components/navbar";
 import {
   Accordion,
@@ -6,26 +8,78 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import * as React from "react";
 import { PiBooksFill, PiChatCircleFill, PiExamFill } from "react-icons/pi";
 
+const services = [
+  {
+    title: "Book AI",
+    icon: <PiBooksFill color="white" size={40} />,
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
+  },
+  {
+    title: "Exam AI",
+    icon: <PiExamFill color="white" size={40} />,
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
+  },
+  {
+    title: "Discussion",
+    icon: <PiChatCircleFill color="white" size={40} />,
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
+  },
+];
+
+const testimonials = [
+  {
+    url: "/people.jpg",
+    name: "Jhon Doe",
+    job: "Dosen",
+    message:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
+  },
+  {
+    url: "/people.jpg",
+    name: "Jhon Doe",
+    job: "Dosen",
+    message:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
+  },
+  {
+    url: "/people.jpg",
+    name: "Jhon Doe",
+    job: "Dosen",
+    message:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
+  },
+  {
+    url: "/people.jpg",
+    name: "Jhon Doe",
+    job: "Dosen",
+    message:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
+  },
+  {
+    url: "/people.jpg",
+    name: "Jhon Doe",
+    job: "Dosen",
+    message:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
+  },
+];
+
 export default function Home() {
-  const services = [
-    {
-      title: "Book AI",
-      icon: <PiBooksFill color="white" size={40} />,
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
-    },
-    {
-      title: "Exam AI",
-      icon: <PiExamFill color="white" size={40} />,
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
-    },
-    {
-      title: "Discussion",
-      icon: <PiChatCircleFill color="white" size={40} />,
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
-    },
-  ];
+  const plugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true }),
+  );
+
   return (
     <>
       <Navbar />
@@ -51,9 +105,13 @@ export default function Home() {
             </h1>
             <div className="flex justify-center gap-5 items-center w-6/12">
               <Button className="px-8">Jelajahi</Button>
-              <Button variant="ghost">
-                <u className="text-blue-600">Masih Bingung?</u>
-              </Button>
+              <button className="group relative px-8 py-2 text-blue-600 duration-[400ms] font-medium">
+                <u>Punya Pertanyaan?</u>
+                <span className="absolute left-0 top-0 h-[2px] w-0 bg-gradient-to-r from-blue-500 to-green-500 transition-all duration-100 group-hover:w-full" />
+                <span className="absolute right-0 top-0 h-0 w-[2px] bg-gradient-to-r from-blue-500 to-green-500 transition-all delay-100 duration-100 group-hover:h-full" />
+                <span className="absolute bottom-0 right-0 h-[2px] w-0 bg-gradient-to-r from-blue-500 to-green-500 transition-all delay-200 duration-100 group-hover:w-full" />
+                <span className="absolute bottom-0 left-0 h-0 w-[2px] bg-gradient-to-r from-blue-500 to-green-500 transition-all delay-300 duration-100 group-hover:h-full" />
+              </button>
             </div>
           </section>
           <section className="py-14">
@@ -82,6 +140,45 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </section>
+          <section className="py-14">
+            <p className="text-lg uppercase text-transparent bg-gradient-to-b bg-clip-text from-blue-500 to-green-500 font-semibold">
+              testimonial
+            </p>
+            <h2 className="mt-3 gap-2 font-semibold text-4xl text-gray-800">
+              <span className="w-4 h-4 bg-gray-800 inline-block rounded-full"></span>
+              Testimonials from our customers
+            </h2>
+            <p className="mt-3">
+              We have 100.000+ customers, here are our customer testimonials
+            </p>
+            <Carousel plugins={[plugin.current]} className="w-full mt-14">
+              <CarouselContent className="-ml-5">
+                {testimonials?.map((testi, index) => (
+                  <CarouselItem
+                    key={index}
+                    className="pl-5 md:basis-1/2 lg:basis-1/3 bg-gradient-to-b from-gray-50 to-gray-100 flex items-center"
+                  >
+                    <img
+                      src={testi?.url}
+                      alt="logo customer"
+                      className="rounded-l-lg h-[100%] w-[140px] object-cover"
+                    />
+                    <div className="flex flex-col p-4">
+                      <h4 className="font-semibold text-lg text-gray-700">
+                        {testi?.name}
+                      </h4>
+                      <p className="text-sm text-gray-500">{testi?.job}</p>
+                      <p className="text-xs mt-5 text-gray-600">
+                        {testi?.message}
+                      </p>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </section>
           <section className="py-14 relative">
             <div className="absolute top-10 -z-10 h-full w-full">

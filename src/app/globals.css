@@ -58,3 +58,13 @@
     animation-delay: 4s;
   }
 }
+
+@layer components {
+  .side-active {
+    @apply flex items-center gap-2 bg-blue-50 p-2 rounded-lg text-indigo-500;
+  }
+
+  .side-nonactive {
+    @apply flex items-center gap-2 p-2 rounded-lg text-gray-500 hover:bg-blue-50 cursor-pointer duration-200;
+  }
+}
