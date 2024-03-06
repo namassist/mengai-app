@@ -1,6 +1,7 @@
 "use client";
 
 import { AuthLayout } from "@/components";
+import CardCourse from "@/components/cards/course";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -27,7 +28,7 @@ const courseStats = [
     progress: 25,
   },
   {
-    name: "2324-Genap-TI 4A-Metode Penelitian",
+    name: "2324-Genap-TI 4A-Metode Penelitian afaf agfag afgasg",
     teacher: {
       name: "Wiktasari, S.T., M.Kom.",
       image:
@@ -139,35 +140,12 @@ export default function Dashboard() {
               </Button>
             </div>
             <div className="w-full flex gap-2">
-              {courseStats?.map((cm, index) => (
-                <Card className="w-4/12 bg-white shadow-sm" key={index}>
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-xs font-semibold overflow-hidden text-ellipsis whitespace-nowrap">
-                      {cm?.name}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="mt-0 pb-3">
-                    <div className="flex items-center gap-1">
-                      <Avatar>
-                        <AvatarImage
-                          src={cm?.teacher?.image}
-                          alt="@shadcn"
-                          className="w-10"
-                        />
-                        <AvatarFallback>ME</AvatarFallback>
-                      </Avatar>
-                      <div className="text-xs text-muted-foreground tracking-wide">
-                        <p>{cm?.teacher?.name}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                  <CardFooter className="relative gap-2">
-                    <span className="absolute right-6 -top-3 text-xs text-muted-foreground">
-                      {cm?.progress}%
-                    </span>
-                    <Progress className="h-1.5 mt-2" value={cm?.progress} />
-                  </CardFooter>
-                </Card>
+              {courseStats?.map((course, index) => (
+                <CardCourse
+                  course={course}
+                  key={index}
+                  className="w-full lg:w-4/12"
+                />
               ))}
             </div>
           </div>
@@ -178,8 +156,8 @@ export default function Dashboard() {
               Upcoming Exams
               <hr className="my-2" />
             </CardTitle>
-            <CardContent className="p-0 space-y-4">
-              <div className="text-xs animate-pulse text-indigo-600 leading-relaxed">
+            <CardContent className="p-0">
+              <div className="text-xs animate-pulse text-indigo-600 leading-relaxed mb-2">
                 <p className="overflow-hidden text-ellipsis whitespace-nowrap">
                   2324-Genap-TI 4A-Integratif Programming
                 </p>
@@ -188,7 +166,7 @@ export default function Dashboard() {
                 </p>
                 <hr className="mt-1" />
               </div>
-              <div className="text-xs text-gray-600 leading-relaxed">
+              <div className="text-xs text-gray-600 leading-relaxed mb-2">
                 <p className="overflow-hidden text-ellipsis whitespace-nowrap">
                   2324-Genap-TI 4A-Metode Penelitian
                 </p>
@@ -197,7 +175,7 @@ export default function Dashboard() {
                 </p>
                 <hr className="mt-1" />
               </div>
-              <div className="text-xs text-gray-600 leading-relaxed">
+              <div className="text-xs text-gray-600 leading-relaxed mb-6">
                 <p className="overflow-hidden text-ellipsis whitespace-nowrap">
                   2324-Genap-TI 4A-Metode Penelitian
                 </p>
@@ -206,13 +184,6 @@ export default function Dashboard() {
                 </p>
                 <hr className="mt-1" />
               </div>
-              <Button
-                className="text-gray-600 p-0 h-auto w-full text-xs hover:bg-transparent"
-                variant="ghost"
-                size="sm"
-              >
-                View All <PiCaretRightBold className="ml-3" />
-              </Button>
             </CardContent>
           </CardHeader>
         </Card>

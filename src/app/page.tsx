@@ -21,19 +21,19 @@ import { PiBooksFill, PiChatCircleFill, PiExamFill } from "react-icons/pi";
 
 const services = [
   {
-    title: "Book AI",
+    title: "Konten Pembelajaran Dinamis",
     icon: <PiBooksFill color="white" size={40} />,
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
+    desc: "Temukan materi yang disesuaikan khusus untuk Anda, dibuat oleh asisten AI kami yang cerdas",
   },
   {
-    title: "Exam AI",
+    title: "Soal Ujian Inovatif",
     icon: <PiExamFill color="white" size={40} />,
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
+    desc: "Tantang diri Anda dengan soal-soal ujian yang dirancang secara unik oleh AI, mendorong pemahaman yang lebih dalam.",
   },
   {
-    title: "Discussion",
+    title: "Analisis Jawaban Cerdas",
     icon: <PiChatCircleFill color="white" size={40} />,
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt quibusdam nesciunt?",
+    desc: "Dapatkan wawasan tentang jawaban ujian dengan analisis mendalam dari AI, membantu Anda belajar dari setiap langkah.",
   },
 ];
 
@@ -75,6 +75,30 @@ const testimonials = [
   },
 ];
 
+const faqs = [
+  {
+    question: "Apa itu Belalai?",
+    answer:
+      "Belalai adalah platform pendidikan online yang memanfaatkan kecerdasan buatan untuk menyediakan pengalaman belajar yang personal dan interaktif. Kami menawarkan konten pembelajaran yang dinamis, soal ujian yang inovatif, dan analisis jawaban yang cerdas",
+  },
+  {
+    question: "Bagaimana AI membantu dalam pembelajaran?",
+    answer:
+      "AI kami dirancang untuk mengadaptasi materi pembelajaran sesuai dengan kebutuhan dan kemampuan setiap individu, membuat soal ujian yang menantang dan relevan, serta menganalisis jawaban untuk memberikan umpan balik yang membantu siswa belajar dan berkembang.",
+  },
+  {
+    question:
+      "Apakah saya perlu keahlian teknis untuk menggunakan platform ini?",
+    answer:
+      "Tidak sama sekali. Platform kami dirancang untuk mudah digunakan oleh siapa saja, tanpa memerlukan keahlian teknis khusus.",
+  },
+  {
+    question: "Apakah platform ini cocok untuk semua tingkat pendidikan?",
+    answer:
+      "Ya, platform kami dapat disesuaikan untuk berbagai tingkat pendidikan, mulai dari sekolah dasar hingga pendidikan tinggi. Bagaimana cara platform ini menghasilkan soal ujian? Platform kami menggunakan algoritma AI canggih untuk menghasilkan soal ujian yang tidak hanya menilai pengetahuan, tetapi juga kemampuan berpikir kritis dan aplikasi konsep.",
+  },
+];
+
 export default function Home() {
   const plugin = React.useRef(
     Autoplay({ delay: 3000, stopOnInteraction: true }),
@@ -94,14 +118,13 @@ export default function Home() {
             </div>
             <h1 className="font-semibold text-6xl text-center w-8/12">
               <span className="text-transparent bg-gradient-to-r bg-clip-text from-blue-500 to-green-500 inline">
-                Get Connected
+                Transformasi Pendidikan
               </span>{" "}
-              to the Best Remote Jobs in Your Field
+              indonesia dengan teknologi AI
             </h1>
             <h1 className="text-gray-600 text-center w-6/12">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-              iusto illo. Sequi molestiae similique ut, unde inventore
-              aspernatur consectetur
+              Temukan cara belajar baru yang lebih personal, interaktif, dan
+              efektif. Biarkan AI membantu mencapai potensi penuh dirimu.
             </h1>
             <div className="flex justify-center gap-5 items-center w-6/12">
               <Button className="px-8">Jelajahi</Button>
@@ -202,40 +225,12 @@ export default function Home() {
               </div>
               <div className="w-6/12">
                 <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>Is it accessible?</AccordionTrigger>
-                    <AccordionContent>
-                      Yes. It adheres to the WAI-ARIA design pattern.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-2">
-                    <AccordionTrigger>Is it styled?</AccordionTrigger>
-                    <AccordionContent>
-                      Yes. It comes with default styles that matches the other
-                      components&apos; aesthetic.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-3">
-                    <AccordionTrigger>Is it animated?</AccordionTrigger>
-                    <AccordionContent>
-                      Yes. It&apos;s animated by default, but you can disable it
-                      if you prefer.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-2">
-                    <AccordionTrigger>Is it styled?</AccordionTrigger>
-                    <AccordionContent>
-                      Yes. It comes with default styles that matches the other
-                      components&apos; aesthetic.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-3">
-                    <AccordionTrigger>Is it animated?</AccordionTrigger>
-                    <AccordionContent>
-                      Yes. It&apos;s animated by default, but you can disable it
-                      if you prefer.
-                    </AccordionContent>
-                  </AccordionItem>
+                  {faqs?.map((faq, index) => (
+                    <AccordionItem value={`item-${index}`} key={index}>
+                      <AccordionTrigger>{faq?.question}</AccordionTrigger>
+                      <AccordionContent>{faq?.answer}</AccordionContent>
+                    </AccordionItem>
+                  ))}
                 </Accordion>
               </div>
             </div>
