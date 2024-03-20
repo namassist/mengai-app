@@ -1,3 +1,5 @@
+"use client";
+
 import { Header, Sidebar } from "..";
 
 export default function authLayout({
@@ -8,10 +10,14 @@ export default function authLayout({
   return (
     <div className="flex">
       <Sidebar />
-      <main className="container pt-4 h-full min-h-screen grow overflow-auto pb-10 bg-[#dbdefc42] space-y-6">
-        <Header />
-        <hr />
-        {children}
+      <main
+        className={`pt-4 h-full min-h-screen grow overflow-auto pb-10 transition-color duration-500 bg-bgPrimary`}
+      >
+        <div className="container space-y-6">
+          <Header />
+          <hr />
+          {children}
+        </div>
       </main>
     </div>
   );

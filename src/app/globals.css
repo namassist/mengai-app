@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    --color-bg-primary: 234.55 84.62% 92.35% 0.26;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -27,9 +28,11 @@
   }
 
   .dark {
+    --color-bg-primary: 252.5 28.57% 16.47%;
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
+    /* --card: 253.04° 33.33% 13.53%; */
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
@@ -60,11 +63,15 @@
 }
 
 @layer components {
+  .tab-active {
+    @apply text-xs font-semibold rounded-none bg-transparent;
+  }
+
   .side-active {
-    @apply flex items-center gap-2 bg-blue-50 p-2 rounded-lg text-indigo-500;
+    @apply flex items-center gap-2 bg-blue-50 p-2 rounded-lg text-indigo-500 font-semibold dark:bg-indigo-600 dark:text-gray-200;
   }
 
   .side-nonactive {
-    @apply flex items-center gap-2 p-2 rounded-lg text-gray-500 hover:bg-blue-50 cursor-pointer duration-200;
+    @apply flex items-center gap-2 p-2 rounded-lg text-gray-500 hover:bg-blue-50 dark:hover:bg-indigo-600 cursor-pointer duration-200 dark:text-white;
   }
 }

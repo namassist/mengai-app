@@ -224,7 +224,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="w-6/12">
-                <Accordion type="single" collapsible className="w-full">
+                <Accordion type="multiple" className="w-full">
                   {faqs?.map((faq, index) => (
                     <AccordionItem value={`item-${index}`} key={index}>
                       <AccordionTrigger>{faq?.question}</AccordionTrigger>

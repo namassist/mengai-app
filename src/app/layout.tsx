@@ -1,9 +1,15 @@
+import { ThemeProvider } from "@/components/layouts/themeProvider";
+import { AppProvider } from "@/context";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
+// import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({
+//   subsets: ["latin"],
+//   display: "swap",
+//   adjustFontFallback: false,
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,9 +23,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className}`}>
-        <NextTopLoader color="#2299DD" />
-        {children}
+      <body>
+        <AppProvider>
+          <ThemeProvider attribute="class">
+            <NextTopLoader color="#2299DD" />
+            {children}
+          </ThemeProvider>
+        </AppProvider>
       </body>
     </html>
   );

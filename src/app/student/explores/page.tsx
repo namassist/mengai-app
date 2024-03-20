@@ -1,9 +1,5 @@
 "use client";
-
 import { AuthLayout } from "@/components";
-import CardCourse from "@/components/cards/course";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Pagination,
   PaginationContent,
@@ -21,105 +17,131 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { PiMagnifyingGlassBold } from "react-icons/pi";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import * as React from "react";
+import { BiBuildingHouse } from "react-icons/bi";
+import { MdElectricBolt, MdEngineering } from "react-icons/md";
+import { PiArrowsLeftRightDuotone, PiMoneyFill } from "react-icons/pi";
+import { RiFilter2Line } from "react-icons/ri";
+import { TbBusinessplan } from "react-icons/tb";
+import { Card } from "./components";
+
 export default function Explores() {
+  const [selectedMajor, setSelectedMajor] = React.useState<string>("all");
+  const [selectedSort, setSelectedSort] = React.useState<string>("newest");
+
   return (
     <AuthLayout>
-      <section className="w-full flex flex-col lg:flex-row gap-8 pb-4">
-        <Card className="w-full p-10 bg-indigo-100/30">
-          <CardContent className="w-full flex justify-between items-center pb-0">
-            <Select>
-              <SelectTrigger className="w-3/12 py-5 text-muted-foreground">
-                <SelectValue placeholder="Select a Type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="courses">Courses</SelectItem>
-                  <SelectItem value="exam">Exams</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-            <Select>
-              <SelectTrigger className="w-3/12 py-5 text-muted-foreground">
-                <SelectValue placeholder="Select a Major" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="elektro">Teknik Elektro</SelectItem>
-                  <SelectItem value="sipil">Teknik Sipil</SelectItem>
-                  <SelectItem value="mesin">Teknik Mesin</SelectItem>
-                  <SelectItem value="Administrasi Bisnis">
-                    Administrasi Bisnis
-                  </SelectItem>
-                  <SelectItem value="Akuntansi">Akuntansi</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-            <Select>
-              <SelectTrigger className="w-3/12 py-5 text-muted-foreground">
-                <SelectValue placeholder="Select a Lecturer" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="courses">A</SelectItem>
-                  <SelectItem value="exam">B</SelectItem>
-                  <SelectItem value="exam">C</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-            <Button className="bg-indigo-500 w-[160px] font-medium">
-              <PiMagnifyingGlassBold className="h-4 w-4 text-gray-100 mr-2" />
-              Search
-            </Button>
-          </CardContent>
-        </Card>
-      </section>
-      <section>
-        <Select>
-          <SelectTrigger className="w-[100px] text-xs">
-            <SelectValue placeholder="Sort by" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectItem value="grapes">Latest</SelectItem>
-              <SelectItem value="pineapple">Oldest</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <div className="w-full flex flex-wrap gap-4 mt-4">
-          {courseStats.map((course, index) => (
-            <CardCourse
-              key={index}
-              course={course}
-              className="w-full lg:w-[calc(25%_-_.75rem)] mb-2"
-            />
-          ))}
+      <Tabs defaultValue="all" className="h-full space-y-6">
+        <div className="flex items-center gap-4">
+          <TabsList>
+            <TabsTrigger value="all" className="relative">
+              All
+            </TabsTrigger>
+            <TabsTrigger value="active" disabled>
+              Active
+            </TabsTrigger>
+            <TabsTrigger value="finished" disabled>
+              Finished
+            </TabsTrigger>
+          </TabsList>
+          <Select defaultValue={selectedMajor} onValueChange={setSelectedMajor}>
+            <SelectTrigger className="w-[200px]">
+              <SelectValue placeholder="Select a fruit" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="all">
+                  <div className="flex items-center gap-3">
+                    <RiFilter2Line /> All
+                  </div>
+                </SelectItem>
+                <SelectItem value="electro">
+                  <div className="flex items-center gap-3">
+                    <MdElectricBolt /> Elektro
+                  </div>
+                </SelectItem>
+                <SelectItem value="akuntansi">
+                  <div className="flex items-center gap-3">
+                    <PiMoneyFill /> Akuntansi
+                  </div>
+                </SelectItem>
+                <SelectItem value="sipil">
+                  <div className="flex items-center gap-3">
+                    <BiBuildingHouse /> Sipil
+                  </div>
+                </SelectItem>
+                <SelectItem value="mesin">
+                  <div className="flex items-center gap-3">
+                    <MdEngineering /> Mesin
+                  </div>
+                </SelectItem>
+                <SelectItem value="business">
+                  <div className="flex items-center gap-3">
+                    <TbBusinessplan /> Administrasi Bisnis
+                  </div>
+                </SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+          <Select defaultValue={selectedSort} onValueChange={setSelectedSort}>
+            <SelectTrigger className="w-[200px]">
+              <SelectValue placeholder="Select a fruit" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="newest">
+                  <div className="flex items-center gap-3">
+                    <PiArrowsLeftRightDuotone /> Newest
+                  </div>
+                </SelectItem>
+                <SelectItem value="oldest">
+                  <div className="flex items-center gap-3">
+                    <PiArrowsLeftRightDuotone /> Oldest
+                  </div>
+                </SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
-        <Pagination className="mt-8">
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious href="#" />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#">1</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#" isActive>
-                2
-              </PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#">3</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationEllipsis />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext href="#" />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
-      </section>
+        <TabsContent value="all" className="border-none p-0 outline-none">
+          <section className="w-full h-full">
+            <div className="w-full flex flex-wrap gap-4 mt-4">
+              {courseStats.map((course, index) => (
+                <Card
+                  key={index}
+                  course={course}
+                  className="w-full lg:w-[calc(33.33%_-_.75rem)] mb-2"
+                />
+              ))}
+            </div>
+            <Pagination className="mt-10">
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious href="#" />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#">1</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#" isActive>
+                    2
+                  </PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#">3</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationEllipsis />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationNext href="#" />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          </section>
+        </TabsContent>
+      </Tabs>
     </AuthLayout>
   );
 }
@@ -142,6 +164,42 @@ const courseStats = [
         "https://avataaars.io/?avatarStyle=Circle&topType=Hijab&accessoriesType=Blank&hatColor=Blue03&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Pale",
     },
     progress: 70,
+  },
+  {
+    name: "2324-Genap-TI 4A-Metode Penelitian afaf agfag afgasg",
+    teacher: {
+      name: "Wiktasari, S.T., M.Kom.",
+      image:
+        "https://avataaars.io/?avatarStyle=Circle&topType=Hijab&accessoriesType=Blank&hatColor=Blue03&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Pale",
+    },
+    progress: 70,
+  },
+  {
+    name: "2324-Genap-TI 4A-Virtual System",
+    teacher: {
+      name: "Wiktasari, S.T., M.Kom.",
+      image:
+        "https://avataaars.io/?avatarStyle=Circle&topType=Hijab&accessoriesType=Blank&hatColor=Blue03&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Pale",
+    },
+    progress: 50,
+  },
+  {
+    name: "2324-Genap-TI 4A-Virtual System",
+    teacher: {
+      name: "Wiktasari, S.T., M.Kom.",
+      image:
+        "https://avataaars.io/?avatarStyle=Circle&topType=Hijab&accessoriesType=Blank&hatColor=Blue03&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Pale",
+    },
+    progress: 50,
+  },
+  {
+    name: "2324-Genap-TI 4A-Virtual System",
+    teacher: {
+      name: "Wiktasari, S.T., M.Kom.",
+      image:
+        "https://avataaars.io/?avatarStyle=Circle&topType=Hijab&accessoriesType=Blank&hatColor=Blue03&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Pale",
+    },
+    progress: 50,
   },
   {
     name: "2324-Genap-TI 4A-Virtual System",
