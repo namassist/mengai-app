@@ -1,286 +1,161 @@
-import { Header } from "@/components";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+"use client";
+
+import { AuthLayout } from "@/components";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import Link from "next/link";
-import {
-  PiCaretCircleRightFill,
-  PiCheckCircleFill,
-  PiCircleBold,
-} from "react-icons/pi";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PiBookOpenBold, PiExamBold, PiNotepadBold } from "react-icons/pi";
 
 export default function page() {
   return (
-    <div
-      className={`relative grow pb-10 transition-color duration-500 bg-bgPrimary overflow-y-hidden`}
-    >
-      <Header
-        classes="fixed top-0 border-b-[1px] px-10 pt-2 pb-4 z-50 bg-background"
-        type="course"
-      />
-      <main className="relative mt-[80px] z-10 pl-10">
-        <div className="w-[calc(100%_-_280px)] min-h-screen border-r-[1px] pt-6 pr-10 space-y-2">
-          <h5 className="text-xl font-bold">KONTORUU!</h5>
-          <p className="leading-relaxed text-gray-700 dark:text-gray-200 text-justify font-normal">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis
-            reprehenderit id quidem adipisci. Laudantium animi rerum veritatis
-            earum, atque tempore architecto amet sunt in, eos esse magni
-            deleniti nobis cumque molestiae culpa enim asperiores perspiciatis
-            quasi libero? Vel, rerum nihil nulla necessitatibus neque
-            reprehenderit dolore tempore esse incidunt ipsam numquam vitae quia
-            ea illo, quibusdam veniam? Laboriosam incidunt commodi assumenda.
-            Dolor architecto eaque rem nihil exercitationem dignissimos
-            perferendis, laudantium delectus!
-          </p>
+    <AuthLayout>
+      <Tabs defaultValue="all" className="h-full space-y-6">
+        <div className="flex items-center gap-4">
+          <TabsList>
+            <TabsTrigger value="all" className="relative">
+              All
+            </TabsTrigger>
+            <TabsTrigger value="lesson">Lessons</TabsTrigger>
+            <TabsTrigger value="assignments">Assignments</TabsTrigger>
+            <TabsTrigger value="exams">Exams</TabsTrigger>
+          </TabsList>
         </div>
-        <div className="w-[280px] fixed right-0 top-[80px]">
-          <div className="flex justify-between items-center p-4">
-            <Button variant="ghost" size="icon" className="w-auto h-auto">
-              <PiCaretCircleRightFill size={34} />
-            </Button>
-            <h4 className="font-bold">Daftar Modul</h4>
+        <TabsContent
+          value="all"
+          className="border-none p-0 outline-none w-full flex gap-8"
+        >
+          <div className="w-8/12 h-40 space-y-6">
+            <div className="bg-neutral-100 bg-opacity-60 rounded-lg p-4 space-y-1 cursor-pointer">
+              <p className="border-l-[3px] border-green-400 pl-2 font-bold uppercase text-xs text-neutral-400">
+                01 Lesson
+              </p>
+              <div className="flex items-center justify-between">
+                <div className="space-y-1 pl-3">
+                  <p className="font-semibold text-neutral-600">
+                    Introduction Web Programming
+                  </p>
+                  <p className="text-neutral-500 text-xs">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Numquam provident et quod.
+                  </p>
+                </div>
+                <Button
+                  variant="ghost"
+                  className="rounded-full p-2 bg-indigo-50 h-10 w-10 hover:text-neutral-100 text-indigo-600 hover:bg-indigo-600"
+                >
+                  <PiBookOpenBold size={18} />
+                </Button>
+              </div>
+            </div>
+            <div className="bg-neutral-100 bg-opacity-60 rounded-lg p-4 space-y-1 cursor-pointer">
+              <p className="border-l-[3px] border-yellow-400 pl-2 font-bold uppercase text-xs text-neutral-400">
+                01 Assignment
+              </p>
+              <div className="flex items-center justify-between">
+                <div className="space-y-1 pl-3">
+                  <p className="font-semibold text-neutral-600">
+                    Impplementation Web Design
+                  </p>
+                  <p className="text-neutral-500 text-xs">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Numquam provident et quod.
+                  </p>
+                </div>
+                <Button
+                  variant="ghost"
+                  className="rounded-full p-2 bg-indigo-50 h-10 w-10 hover:text-neutral-100 text-indigo-600 hover:bg-indigo-600"
+                >
+                  <PiNotepadBold size={18} />
+                </Button>
+              </div>
+            </div>
+            <div className="bg-neutral-100 bg-opacity-60 rounded-lg p-4 space-y-1 cursor-pointer">
+              <p className="border-l-[3px] border-indigo-400 pl-2 font-bold uppercase text-xs text-neutral-400">
+                01 Exams
+              </p>
+              <div className="flex items-center justify-between">
+                <div className="space-y-1 pl-3">
+                  <p className="font-semibold text-neutral-600">Exams UTS</p>
+                  <p className="text-neutral-500 text-xs">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Numquam provident et quod.
+                  </p>
+                </div>
+                <Button
+                  variant="ghost"
+                  className="rounded-full p-2 bg-indigo-50 h-10 w-10 hover:text-neutral-100 text-indigo-600 hover:bg-indigo-600"
+                >
+                  <PiExamBold size={18} />
+                </Button>
+              </div>
+            </div>
+            <div className="bg-neutral-100 bg-opacity-60 rounded-lg p-4 space-y-1 cursor-pointer">
+              <p className="border-l-[3px] border-green-400 pl-2 font-bold uppercase text-xs text-neutral-400">
+                01 Lesson
+              </p>
+              <div className="flex items-center justify-between">
+                <div className="space-y-1 pl-3">
+                  <p className="font-semibold text-neutral-600">
+                    Introduction Web Programming
+                  </p>
+                  <p className="text-neutral-500 text-xs">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Numquam provident et quod.
+                  </p>
+                </div>
+                <Button
+                  variant="ghost"
+                  className="rounded-full p-2 bg-indigo-50 h-10 w-10 hover:text-neutral-100 text-indigo-600 hover:bg-indigo-600"
+                >
+                  <PiBookOpenBold size={18} />
+                </Button>
+              </div>
+            </div>
+            <div className="bg-neutral-100 bg-opacity-60 rounded-lg p-4 space-y-1 cursor-pointer">
+              <p className="border-l-[3px] border-yellow-400 pl-2 font-bold uppercase text-xs text-neutral-400">
+                01 Assignment
+              </p>
+              <div className="flex items-center justify-between">
+                <div className="space-y-1 pl-3">
+                  <p className="font-semibold text-neutral-600">
+                    Impplementation Web Design
+                  </p>
+                  <p className="text-neutral-500 text-xs">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Numquam provident et quod.
+                  </p>
+                </div>
+                <Button
+                  variant="ghost"
+                  className="rounded-full p-2 bg-indigo-50 h-10 w-10 hover:text-neutral-100 text-indigo-600 hover:bg-indigo-600"
+                >
+                  <PiNotepadBold size={18} />
+                </Button>
+              </div>
+            </div>
+            <div className="bg-neutral-100 bg-opacity-60 rounded-lg p-4 space-y-1 cursor-pointer">
+              <p className="border-l-[3px] border-indigo-400 pl-2 font-bold uppercase text-xs text-neutral-400">
+                01 Exams
+              </p>
+              <div className="flex items-center justify-between">
+                <div className="space-y-1 pl-3">
+                  <p className="font-semibold text-neutral-600">Exams UTS</p>
+                  <p className="text-neutral-500 text-xs">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Numquam provident et quod.
+                  </p>
+                </div>
+                <Button
+                  variant="ghost"
+                  className="rounded-full p-2 bg-indigo-50 h-10 w-10 hover:text-neutral-100 text-indigo-600 hover:bg-indigo-600"
+                >
+                  <PiExamBold size={18} />
+                </Button>
+              </div>
+            </div>
           </div>
-          <div className="border relative p-4">
-            <Progress className="h-1.5" value={65} />
-            <span className="text-indigo-500 text-[11px] font-semibold">
-              65%{" "}
-              <span className="text-gray-600 dark:text-gray-200 font-normal">
-                Selesai
-              </span>
-            </span>
-          </div>
-          <div className="p-4 h-[calc(100vh_-_220px)] overflow-y-scroll ">
-            <Accordion type="multiple" className="w-full">
-              <AccordionItem value="item-1">
-                <AccordionTrigger className="text-sm font-semibold text-gray-600 dark:text-gray-200">
-                  Persiapan Belajar
-                </AccordionTrigger>
-                <AccordionContent className="border-l-[1px] pl-4">
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 dark:text-gray-200 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCircleBold className="inline" size={15} />
-                    Persetujuan Hak Cipta
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 dark:text-gray-200 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Prasyarat Kemampuan
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Prasyarat Tools
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Mekanisme Belajar
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Forum Diskusi
-                  </Link>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger className="text-sm font-semibold text-gray-600 dark:text-gray-200">
-                  Persiapan Belajar
-                </AccordionTrigger>
-                <AccordionContent className="border-l-[1px] pl-4">
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Persetujuan Hak Cipta
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Prasyarat Kemampuan
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Prasyarat Tools
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Mekanisme Belajar
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Forum Diskusi
-                  </Link>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionTrigger className="text-sm font-semibold text-gray-600 dark:text-gray-200">
-                  Persiapan Belajar
-                </AccordionTrigger>
-                <AccordionContent className="border-l-[1px] pl-4">
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    Persetujuan Hak Cipta
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Prasyarat Kemampuan
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Prasyarat Tools
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Mekanisme Belajar
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Forum Diskusi
-                  </Link>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-4">
-                <AccordionTrigger className="text-sm font-semibold text-gray-600 dark:text-gray-200">
-                  Persiapan Belajar
-                </AccordionTrigger>
-                <AccordionContent className="border-l-[1px] pl-4">
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Persetujuan Hak Cipta
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Prasyarat Kemampuan
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Prasyarat Tools
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Mekanisme Belajar
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs font-medium text-gray-600 hover:underline mb-4 flex items-center gap-2"
-                  >
-                    <PiCheckCircleFill
-                      className="inline text-green-500"
-                      size={16}
-                    />
-                    Forum Diskusi
-                  </Link>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
-        </div>
-      </main>
-    </div>
+          <div className="w-4/12 h-40 space-y-4 bg-red-100"></div>
+        </TabsContent>
+      </Tabs>
+    </AuthLayout>
   );
 }

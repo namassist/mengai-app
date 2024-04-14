@@ -1,4 +1,5 @@
 "use client";
+
 import { AuthLayout } from "@/components";
 import {
   Pagination,
